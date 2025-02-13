@@ -1,0 +1,159 @@
+"use client";
+import React from "react";
+
+function MainComponent() {
+  return (
+    <div className="relative min-h-screen">
+      <div className="flex-grow"></div>
+      <footer className="bg-gray-800 text-white py-8 w-full">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Wellness Services</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/workplace-yoga" className="hover:text-gray-300">
+                    Workplace Yoga
+                  </a>
+                </li>
+                <li>
+                  <a href="/meditation" className="hover:text-gray-300">
+                    Meditation Sessions
+                  </a>
+                </li>
+                <li>
+                  <a href="/stress-management" className="hover:text-gray-300">
+                    Stress Management
+                  </a>
+                </li>
+                <li>
+                  <a href="/fitness-programs" className="hover:text-gray-300">
+                    Fitness Programs
+                  </a>
+                </li>
+                <li>
+                  <a href="/wellness-workshops" className="hover:text-gray-300">
+                    Wellness Workshops
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a href="/wellness-blog" className="hover:text-gray-300">
+                    Wellness Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="/health-tips" className="hover:text-gray-300">
+                    Daily Health Tips
+                  </a>
+                </li>
+                <li>
+                  <a href="/success-stories" className="hover:text-gray-300">
+                    Success Stories
+                  </a>
+                </li>
+                <li>
+                  <a href="/wellness-guides" className="hover:text-gray-300">
+                    Wellness Guides
+                  </a>
+                </li>
+                <li>
+                  <a href="/newsletters" className="hover:text-gray-300">
+                    Wellness Newsletter
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Join Our Community</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="https://linkedin.com/groups/officewellness"
+                    className="hover:text-gray-300"
+                  >
+                    <i className="fab fa-linkedin mr-2"></i>Wellness Network
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://instagram.com/wellnessatwork"
+                    className="hover:text-gray-300"
+                  >
+                    <i className="fab fa-instagram mr-2"></i>Daily Wellness Tips
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://facebook.com/groups/corporatewellness"
+                    className="hover:text-gray-300"
+                  >
+                    <i className="fab fa-facebook mr-2"></i>Wellness Community
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://youtube.com/wellnessatwork"
+                    className="hover:text-gray-300"
+                  >
+                    <i className="fab fa-youtube mr-2"></i>Wellness TV
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://pinterest.com/officewellness"
+                    className="hover:text-gray-300"
+                  >
+                    <i className="fab fa-pinterest mr-2"></i>Wellness Ideas
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Wellness Support</h3>
+              <ul className="space-y-2">
+                <li>
+                  <i className="fas fa-envelope mr-2"></i>
+                  wellness@officewellnesshub.com
+                </li>
+                <li>
+                  <i className="fas fa-phone mr-2"></i>Wellness Hotline: +1
+                  (888) WELLNESS
+                </li>
+                <li>
+                  <i className="fas fa-map-marker-alt mr-2"></i>Wellness Center
+                  200 Health Avenue, Floor 3 New York, NY 10001
+                </li>
+                <li className="mt-4">
+                  <a
+                    href="/schedule-wellness-session"
+                    className="bg-[#0f766e] hover:bg-[#115e59] text-white px-4 py-2 rounded-md inline-block"
+                  >
+                    Schedule Wellness Session
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-600 mt-8 pt-4 text-center">
+            <p>© 2024 Office Wellness Hub - Nurturing Workplace Wellness</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function StoryComponent() {
+  return (
+    <div className="w-full">
+      <MainComponent />
+    </div>
+  );
+}
+
+export default MainComponent;
