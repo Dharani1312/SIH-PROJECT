@@ -1,0 +1,159 @@
+"use client";
+import React from "react";
+import Footer from "../components/footer";
+import Navigation from "../components/navigation";
+
+function MainComponent() {
+  const [greeting, setGreeting] = useState("");
+  const features = [
+    {
+      title: "Daily Exercise",
+      description: "Effective workouts to improve physical health",
+      icon: "fa-solid fa-dumbbell",
+      color: "text-blue-600",
+      bg: "bg-blue-100",
+    },
+    {
+      title: "Yoga & Meditation",
+      description: "Guidance for mental peace and wellbeing",
+      icon: "fa-solid fa-spa",
+      color: "text-purple-600",
+      bg: "bg-purple-100",
+    },
+    {
+      title: "Healthy Nutrition",
+      description: "Balanced nutrition guidance",
+      icon: "fa-solid fa-apple-whole",
+      color: "text-green-600",
+      bg: "bg-green-100",
+    },
+    {
+      title: "Health Tracking",
+      description: "Monitor your vital signs and progress",
+      icon: "fa-solid fa-heart-pulse",
+      color: "text-red-600",
+      bg: "bg-red-100",
+    },
+  ];
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await fetch("/api/users/me");
+      if (response.ok) {
+        const userData = await response.json();
+        setUser(userData);
+      }
+    };
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    const timeGreeting =
+      hour < 12
+        ? "Good Morning"
+        : hour < 16
+        ? "Good Afternoon"
+        : hour < 20
+        ? "Good Evening"
+        : "Good Night";
+    setGreeting(user ? `${timeGreeting}, ${user.name}` : timeGreeting);
+  }, [user]);
+
+  return (
+    <div className="min-h-screen bg-[#f8fafc]">
+      <Navigation activePage="/" />
+
+      <div className="bg-gradient-to-r from-[#0f766e] to-[#059669] text-white">
+        <div className="container mx-auto px-4 py-24">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="md:w-1/2 mb-8 md:mb-0">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                {greeting}
+              </h1>
+              <p className="text-2xl mb-10 leading-relaxed">
+                Your partner in the journey to wellness and health
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/community"
+                  className="bg-white text-[#0f766e] px-8 py-3 rounded-lg hover:bg-opacity-90 text-center font-semibold shadow-lg"
+                >
+                  Join Community
+                </a>
+                <a
+                  href="/physiotherapy"
+                  className="bg-[#134e4a] border-2 border-transparent px-8 py-3 rounded-lg hover:bg-[#115e59] text-center font-semibold shadow-lg"
+                >
+                  Book Session
+                </a>
+              </div>
+            </div>
+            <div className="md:w-1/2 md:pl-12">
+              <img
+                src="/wellness.jpg"
+                alt="People exercising and practicing yoga"
+                className="rounded-2xl shadow-2xl w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <a
+            href="/dashboard"
+            className="p-4 bg-blue-100 rounded-lg hover:bg-blue-200 transition-colors text-center"
+          >
+            <i className="fas fa-chart-line text-blue-600 text-2xl mb-2"></i>
+            <p className="font-medium">Dashboard</p>
+          </a>
+          <a
+            href="/community"
+            className="p-4 bg-purple-100 rounded-lg hover:bg-purple-200 transition-colors text-center"
+          >
+            <i className="fas fa-users text-purple-600 text-2xl mb-2"></i>
+            <p className="font-medium">Community</p>
+          </a>
+          <a
+            href="/physiotherapy"
+            className="p-4 bg-green-100 rounded-lg hover:bg-green-200 transition-colors text-center"
+          >
+            <i className="fas fa-hand-holding-medical text-green-600 text-2xl mb-2"></i>
+            <p className="font-medium">Therapy</p>
+          </a>
+          <a
+            href="/gamification"
+            className="p-4 bg-orange-100 rounded-lg hover:bg-orange-200 transition-colors text-center"
+          >
+            <i className="fas fa-gamepad text-orange-600 text-2xl mb-2"></i>
+            <p className="font-medium">Games</p>
+          </a>
+        </div>
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Wellness Features
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className={`${feature.bg} rounded-xl p-6 text-center hover:scale-105 transition-transform`}
+            >
+              <i
+                className={`${feature.icon} ${feature.color} text-4xl mb-4`}
+              ></i>
+              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}
+
+export default MainComponent;
